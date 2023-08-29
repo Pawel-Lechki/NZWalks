@@ -95,12 +95,13 @@ namespace NZWalks.Controllers
         public async Task<IActionResult> Create([FromBody] AddRegionReqDto addRegionReqDto)
         {
             // Map
-            var regionDomainModel = new Region
+            /*var regionDomainModel = new Region
             {
                 Code = addRegionReqDto.Code,
                 Name = addRegionReqDto.Name,
                 RegionImageUrl = addRegionReqDto.RegionImageUrl,
-            };
+            };*/
+            var regionDomainModel = mapper.Map<Region>(addRegionReqDto);
 
             /*await dbContext.Regions.AddAsync(regionDomainModel);
             await dbContext.SaveChangesAsync();*/
