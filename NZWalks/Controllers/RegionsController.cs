@@ -125,12 +125,13 @@ namespace NZWalks.Controllers
         [Route("{id:Guid}")]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateRegionReqDto updateRegionReqDto )
         {
-            var regionDomainModel = new Region
+            /*var regionDomainModel = new Region
             {
                 Code = updateRegionReqDto.Code,
                 Name = updateRegionReqDto.Name,
                 RegionImageUrl = updateRegionReqDto.RegionImageUrl,
-            };
+            };*/
+            var regionDomainModel = mapper.Map<Region>(updateRegionReqDto);
 
             /*var regionDomainModel = await dbContext.Regions.FirstOrDefaultAsync(r => r.Id == id);*/
             regionDomainModel = await regionRepository.UpdateAsync(id, regionDomainModel);
